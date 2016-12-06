@@ -39,34 +39,37 @@ class PPB_Product_Builder_Modules {
 		$mods['ppb-product-add-to-cart']       = array(
 			'label'       => 'WC - Add to Cart',
 			'icon_class'  => 'dashicons dashicons-cart',
-			'tab'         => "#pootle-$token-tab",
+			//'tab'         => "#pootle-$token-tab",
 			'callback'    => 'ppbProd_a2c',
 			'ActiveClass' => $this->class,
-			'priority'    => 15
 		);
 		$mods['ppb-product-short-description'] = array(
 			'label'       => 'WC - Short Description',
 			'icon_class'  => 'dashicons dashicons-cart',
-			'tab'         => "#pootle-$token-tab",
+			//'tab'         => "#pootle-$token-tab",
 			'callback'    => 'ppbProd_desc',
 			'ActiveClass' => $this->class,
-			'priority'    => 15
 		);
 		$mods['ppb-product-tabs']              = array(
 			'label'       => 'WC - Product tabs',
 			'icon_class'  => 'dashicons dashicons-cart',
-			'tab'         => "#pootle-$token-tab",
+			//'tab'         => "#pootle-$token-tab",
 			'callback'    => 'ppbProd_tabs',
 			'ActiveClass' => $this->class,
-			'priority'    => 15
 		);
 		$mods['ppb-product-related']           = array(
 			'label'       => 'WC - Related products',
 			'icon_class'  => 'dashicons dashicons-cart',
-			'tab'         => "#pootle-$token-tab",
+			//'tab'         => "#pootle-$token-tab",
 			'callback'    => 'ppbProd_related',
 			'ActiveClass' => $this->class,
-			'priority'    => 15
+		);
+		$mods['ppb-product-reviews']           = array(
+			'label'       => 'WC - Product reviews',
+			'icon_class'  => 'dashicons dashicons-cart',
+			//'tab'         => "#pootle-$token-tab",
+			'callback'    => 'ppbProd_reviews',
+			'ActiveClass' => $this->class,
 		);
 
 		return $mods;

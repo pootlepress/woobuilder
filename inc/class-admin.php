@@ -75,6 +75,7 @@ class PPB_Product_Builder_Admin{
 					'[ppb_product_add_to_cart]'       => 'Add to Cart',
 					'[ppb_product_short_description]' => 'Short Description',
 					'[ppb_product_tabs]'              => 'Product tabs',
+					'[ppb_product_reviews]'           => 'Product reviews',
 					'[ppb_product_related]'           => 'Related products',
 				),
 				'tab'      => $this->token,

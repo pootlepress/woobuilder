@@ -49,19 +49,21 @@ class PPB_Product_Builder_Public{
 			ob_start();
 			woocommerce_related_products();
 			return ob_get_clean();
-
 		} );
 		add_shortcode( 'ppb_product_add_to_cart', function() {
 			ob_start();
 			woocommerce_template_single_add_to_cart();
 			return ob_get_clean();
-
 		} );
 		add_shortcode( 'ppb_product_tabs', function() {
 			ob_start();
 			woocommerce_output_product_data_tabs();
 			return ob_get_clean();
-
+		} );
+		add_shortcode( 'ppb_product_reviews', function() {
+			ob_start();
+			comments_template();
+			return ob_get_clean();
 		} );
 
 	} // End __construct()
@@ -113,10 +115,8 @@ class PPB_Product_Builder_Public{
 
 					ppbProdbuilderSetting = function( $t, val ) {
 						$t.find( '.ppb-edit-block .dashicons-edit' ).click();
-						var st = JSON.parse( ppbData.widgets[window.ppbPanelI].info.style );
-						st['ppb-product-builder'] = val;
-						console.log( st );
-						ppbData.widgets[window.ppbPanelI].info.style = JSON.stringify( st );
+						$('select[dialog-field="ppb-product-builder"]').val( val );
+						jQuery('#pootlepb-content-editor-panel + div button').click()
 					}
 
 					window.ppbModules.ppbProd_a2c = function ( $t ) {
@@ -130,6 +130,9 @@ class PPB_Product_Builder_Public{
 					};
 					window.ppbModules.ppbProd_related = function ( $t ) {
 						ppbProdbuilderSetting( $t, '[ppb_product_related]' );
+					};
+					window.ppbModules.ppbProd_reviews = function ( $t ) {
+						ppbProdbuilderSetting( $t, '[ppb_product_reviews]' );
 					};
 				} );
 			</script>
