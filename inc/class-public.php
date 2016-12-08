@@ -117,7 +117,7 @@ class PPB_Product_Builder_Public{
 						$t.find( '.ppb-edit-block .dashicons-edit' ).click();
 						$('select[dialog-field="ppb-product-builder"]').val( val );
 						jQuery('#pootlepb-content-editor-panel + div button').click()
-					}
+					};
 
 					window.ppbModules.ppbProd_a2c = function ( $t ) {
 						ppbProdbuilderSetting( $t, '[ppb_product_add_to_cart]' );
@@ -174,7 +174,8 @@ class PPB_Product_Builder_Public{
 					unset( $tabs['description'] );
 					return $tabs;
 				}, 11 );
-				global $post, $product;
+				global $post, $product, $withcomments;
+				$withcomments = true;
 				$post = get_post( $_POST['post'] );
 				$product = wc_get_product( $post );
 			}
