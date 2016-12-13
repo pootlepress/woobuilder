@@ -97,8 +97,37 @@ class PPB_Product_Builder_Public{
 	 * @return array
 	 */
 	public function set_ppb_product_builder_meta( $page_data, $post_id, $post_type ) {
-		if ( 'product' == $post_type ) {
-			add_post_meta( $post_id, 'ppb-product-builder', 1 );
+		if (
+			'product' == $post_type &&
+			wp_verify_nonce( filter_input( INPUT_GET, 'ppb-product-builder-nonce' ), 'enable_ppb_product_builder' )
+		) {
+			global $ppble_new_live_page;
+
+			require Pootle_Page_Builder_Live_Editor::$path . 'inc/vars.php';
+
+			$user         = '';
+			$current_user = wp_get_current_user();
+			if ( $current_user instanceof WP_User ) {
+				$user = ' ' . ucwords( $current_user->user_login );
+			}
+
+			/**
+			 * Filters new live page template
+			 *
+			 * @param int $id Post ID
+			 */
+			$ppb_data = apply_filters( 'pootlepb_live_product_template', $ppble_new_live_page, $post_id, $post_type );
+
+			foreach ( $ppb_data['widgets'] as $i => $wid ) {
+				if ( ! empty( $wid['info']['style'] ) ) {
+					$ppb_data['widgets'][ $i ]['info']['style'] = stripslashes( $wid['info']['style'] );
+				}
+				$ppb_data['widgets'][ $i ]['text'] = html_entity_decode( stripslashes( str_replace( '<!--USER-->', $user, str_replace( '&nbsp;', '&amp;nbsp;', $wid['text'] ) ) ) );
+			}
+
+			update_post_meta( $post_id, 'panels_data', $ppb_data );
+
+			update_post_meta( $post_id, 'ppb-product-builder', 1 );
 		}
 		return $page_data;
 	}
@@ -141,6 +170,21 @@ class PPB_Product_Builder_Public{
 	}
 
 	/**
+	 *
+	 * @param bool $bool
+	 * @param int $post_id
+	 *
+	 * @return bool
+	 */
+	public function pootlepb_dump_ppb_content( $bool, $post_id ) {
+		if ( PPB_Product_Builder::is_ppb_product( $post_id ) ) {
+			return false;
+		}
+
+		return $bool;
+	}
+
+	/**
 	 * Adds front end stylesheet and js
 	 * @action wp_enqueue_scripts
 	 * @since 1.0.0
@@ -154,11 +198,8 @@ class PPB_Product_Builder_Public{
 	}
 
 	/**
-	 * Adds or modifies the row attributes
-	 * @param array $attr Row html attributes
-	 * @param array $settings Row settings
-	 * @return array Row html attributes
-	 * @filter pootlepb_row_style_attributes
+	 * Processes the content block setting and renders the short code
+	 * @param array $data Content panel data
 	 * @since 1.0.0
 	 */
 	public function process_shortcode( $data ) {

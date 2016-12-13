@@ -41,6 +41,52 @@ class PPB_Product_Builder_Admin{
 	} // End __construct()
 
 	/**
+	 * Adds admin only actions
+	 * @action admin_init
+	 */
+	public function admin_init() {
+		add_filter( 'pootlepb_builder_post_types', array( $this, 'remove_ppb_product' ), 99 );
+	}
+
+	public function enqueue() {
+		global $post;
+
+		if ( $post->post_type == 'product' ) {
+			wp_enqueue_script(  $this->token, "$this->url/assets/edit-product.js", array( 'jquery' ) );
+
+			$nonce_url =
+				wp_nonce_url( get_the_permalink( $post->ID ), 'ppb-live-edit-nonce', 'ppbLiveEditor' ) .
+				'&ppb-product-builder-nonce=' . wp_create_nonce( 'enable_ppb_product_builder' );
+
+			wp_localize_script(  $this->token, 'wcProductBuilderLiveEditLink', $nonce_url );
+
+			echo <<<HTML
+<style>
+	a.button.pootle {
+		margin: .5em 0 .25em .5em;
+	}
+	button.wp-switch-editor {
+		padding: .5em .7em;
+	}
+</style>
+HTML;
+
+		}
+	}
+
+	/**
+	 * Removes product from ppb supported posts on admin end.
+	 * @param $post_types Post types
+	 * @return array Post types
+	 */
+	public function remove_ppb_product( $post_types ) {
+		$post_types = array_unique( $post_types );
+		unset( $post_types[ array_search( 'product', $post_types ) ] );
+
+		return $post_types;
+	}
+
+	/**
 	 * Adds editor panel tab
 	 * @param array $tabs The array of tabs
 	 * @return array Tabs
@@ -83,22 +129,5 @@ class PPB_Product_Builder_Admin{
 		}
 
 		return $fields;
-	}
-
-	/**
-	 * Adds new slider link to admon bar
-	 * @param WP_Admin_Bar $admin_bar
-	 */
-	function admin_bar_menu( $admin_bar ) {
-		$new_live_page_url = admin_url( 'admin-ajax.php' );
-		$new_live_page_url = wp_nonce_url( $new_live_page_url, 'ppb-new-live-post', 'ppbLiveEditor' ) . '&action=pootlepb_live_page';
-
-		$admin_bar->add_menu( array(
-			'parent' => 'new-content',
-			'id'     => 'ppb-new-live-product',
-			'title'  => 'Live Product',
-			'href'   => $new_live_page_url . '&post_type=product'
-		) );
-
 	}
 }
