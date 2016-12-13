@@ -80,10 +80,6 @@ class PPB_Product_Builder_Public{
 		    PPB_Product_Builder::is_ppb_product()
 		) {
 			$template = dirname( __FILE__ ) . '/ppb-product-tpl.php';
-			add_filter( 'woocommerce_product_tabs', function ( $tabs ) {
-				unset( $tabs['description'] );
-				return $tabs;
-			}, 11 );
 		}
 
 		return $template;
