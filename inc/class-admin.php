@@ -48,15 +48,56 @@ class PPB_Product_Builder_Admin{
 		add_filter( 'pootlepb_builder_post_types', array( $this, 'remove_ppb_product' ), 99 );
 	}
 
+	/**
+	 * @param int $post_id
+	 */
+	public function save_post( $post_id ) {
+		// Verify that the nonce is valid.
+		if (
+			! wp_verify_nonce( filter_input( INPUT_POST, 'ppb-product-builder-nonce' ), 'ppb-product-builder-meta' ) ||
+			( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE )
+		) {
+			return;
+		}
+		update_post_meta( $post_id, 'ppb-product-builder', filter_input( INPUT_POST, 'ppb-product-builder' ) );
+	}
+
+	/**
+	 * Adds admin only actions
+	 * @action admin_init
+	 */
+	public function product_meta_fields() {
+		// Add an nonce field so we can check for it later.
+		wp_nonce_field( 'ppb-product-builder-meta', 'ppb-product-builder-nonce' );
+
+		?>
+		<div class="clear misc-pub-section">
+			<label for="ppb-product-builder"><b><?php _e( 'Enable Product builder', $this->token ); ?></b></label>
+			<input type="checkbox" class="checkbox" style="" name="ppb-product-builder" id="ppb-product-builder" value="1" <?php
+			checked( get_post_meta( get_the_ID(), 'ppb-product-builder', 'single' ), 1 );
+			?>>
+			<span class="description">
+			<?php
+			if ( PPB_Product_Builder::is_ppb_product( get_the_ID() ) ) {
+				_e( 'Uncheck this to disable', $this->token );
+			} else {
+				_e( 'Check this to enable', $this->token );
+			}
+			?>
+			</span>
+		</div>
+		<?php
+	}
+
 	public function enqueue() {
 		global $post;
 
 		if ( $post->post_type == 'product' ) {
 			wp_enqueue_script(  $this->token, "$this->url/assets/edit-product.js", array( 'jquery' ) );
 
-			$nonce_url =
-				wp_nonce_url( get_the_permalink( $post->ID ), 'ppb-live-edit-nonce', 'ppbLiveEditor' ) .
-				'&ppb-product-builder-nonce=' . wp_create_nonce( 'enable_ppb_product_builder' );
+			$nonce_url = wp_nonce_url( get_the_permalink( $post->ID ), 'ppb-live-edit-nonce', 'ppbLiveEditor' );
+
+			$nonce_url .= '&ppb-product-builder-nonce=' . wp_create_nonce( 'enable_ppb_product_builder' );
 
 			wp_localize_script(  $this->token, 'wcProductBuilderLiveEditLink', $nonce_url );
 
@@ -117,12 +158,13 @@ HTML;
 				'type'     => 'select',
 				'priority' => 1,
 				'options'  => array(
-					''                                => 'Choose...',
-					'[ppb_product_add_to_cart]'       => 'Add to Cart',
-					'[ppb_product_short_description]' => 'Short Description',
-					'[ppb_product_tabs]'              => 'Product tabs',
-					'[ppb_product_reviews]'           => 'Product reviews',
-					'[ppb_product_related]'           => 'Related products',
+					''									=> 'Choose...',
+					'[ppb_product_add_to_cart]'			=> 'Add to Cart',
+					'[ppb_product_short_description]'	=> 'Short Description',
+					'[ppb_product_tabs]'				=> 'Product tabs',
+					'[ppb_product_reviews]'				=> 'Product reviews',
+					'[ppb_product_related]'				=> 'Related products',
+					'[ppb_product_images]'				=> 'Products images',
 				),
 				'tab'      => $this->token,
 			);

@@ -64,6 +64,13 @@ class PPB_Product_Builder_Modules {
 			'callback'    => 'ppbProd_related',
 			'ActiveClass' => $this->class,
 		);
+		$mods['ppb-product-images']           = array(
+			'label'       => 'WC - Product images',
+			'icon_class'  => 'dashicons dashicons-cart',
+			//'tab'         => "#pootle-$token-tab",
+			'callback'    => 'ppbProd_images',
+			'ActiveClass' => $this->class,
+		);
 		$mods['ppb-product-reviews']           = array(
 			'label'       => 'WC - Product reviews',
 			'icon_class'  => 'dashicons dashicons-cart',

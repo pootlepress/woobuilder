@@ -12,9 +12,6 @@ Author URI: http://shramee.com/
 require 'inc/class-admin.php';
 /** Plugin public class */
 require 'inc/class-public.php';
-/** Including Main Plugin class */
-require 'class-ppb-product-builder.php';
-
 /**
  * Pootle Pagebuilder Product Builder main class
  * @static string $token Plugin token
@@ -152,16 +149,18 @@ class PPB_Product_Builder {
 		//Instantiating admin class
 		$this->admin = PPB_Product_Builder_Admin::instance();
 
-		add_action( 'admin_print_styles-post-new.php', array( $this->admin, 'enqueue' ) );
-		add_action( 'admin_print_styles-post.php', array( $this->admin, 'enqueue' ) );
+		add_action( 'admin_print_styles-post-new.php',		array( $this->admin, 'enqueue' ) );
+		add_action( 'admin_print_styles-post.php',			array( $this->admin, 'enqueue' ) );
 
-		add_filter( 'admin_init',		array( $this->admin, 'admin_init' ) );
+		add_filter( 'admin_init',							array( $this->admin, 'admin_init' ) );
+		add_filter( 'save_post',							array( $this->admin, 'save_post' ) );
+		add_filter( 'post_submitbox_misc_actions',			array( $this->admin, 'product_meta_fields' ) );
 		//Content block panel tabs
-		add_filter( 'pootlepb_content_block_tabs',		array( $this->admin, 'content_block_tabs' ) );
+		add_filter( 'pootlepb_content_block_tabs',			array( $this->admin, 'content_block_tabs' ) );
 		//Content block panel tabs
 		add_filter( 'pootlepb_le_content_block_tabs',		array( $this->admin, 'content_block_tabs' ) );
 		//Content block panel fields
-		add_filter( 'pootlepb_content_block_fields',	array( $this->admin, 'content_block_fields' ) );
+		add_filter( 'pootlepb_content_block_fields',		array( $this->admin, 'content_block_fields' ) );
 
 
 	}

@@ -4,3 +4,32 @@
  * @package PPB_Product_Builder
  * @version 1.0.0
  */
+
+.single-product div.product .ppb-product-builder-module .images {
+	width: 100%;
+}
+/*
+.ppb-product-builder-module:after {
+	display: block;
+	content: '';
+	clear: both;
+}
+.ppb-product-builder-module .variations td {
+	padding: 1em;
+	vertical-align: middle;
+	text-transform: capitalize;
+}
+.ppb-product-builder-module .variations td:last-child {
+	text-align: right;
+}
+.ppb-product-builder-module .variations td * {
+	display: inline-block;
+	vertical-align: middle;
+}
+.ppb-product-builder-module .quantity {
+	float: left;
+}
+.ppb-product-builder-module .single_add_to_cart_button {
+	float: right;
+}
+*/
