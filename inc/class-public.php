@@ -55,6 +55,11 @@ class PPB_Product_Builder_Public{
 			woocommerce_show_product_images();
 			return ob_get_clean();
 		} );
+		add_shortcode( 'ppb_product_rating', function() {
+			ob_start();
+			woocommerce_template_single_rating();
+			return ob_get_clean();
+		} );
 		add_shortcode( 'ppb_product_add_to_cart', function() {
 			ob_start();
 			woocommerce_template_single_add_to_cart();
@@ -173,6 +178,9 @@ class PPB_Product_Builder_Public{
 					};
 					window.ppbModules.ppbProd_images = function ( $t ) {
 						ppbProdbuilderSetting( $t, '[ppb_product_images]' );
+					};
+					window.ppbModules.ppbProd_rating = function ( $t ) {
+						ppbProdbuilderSetting( $t, '[ppb_product_rating]' );
 					};
 					window.ppbModules.ppbProd_reviews = function ( $t ) {
 						ppbProdbuilderSetting( $t, '[ppb_product_reviews]' );

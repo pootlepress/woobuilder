@@ -164,7 +164,8 @@ HTML;
 					'[ppb_product_tabs]'				=> 'Product tabs',
 					'[ppb_product_reviews]'				=> 'Product reviews',
 					'[ppb_product_related]'				=> 'Related products',
-					'[ppb_product_images]'				=> 'Products images',
+					'[ppb_product_images]'				=> 'Product images',
+					'[ppb_product_rating]'				=> 'Product rating',
 				),
 				'tab'      => $this->token,
 			);
