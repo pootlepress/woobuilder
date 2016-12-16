@@ -37,7 +37,7 @@ class PPB_Product_Builder_Modules {
 		}
 
 		$mods['ppb-product-add-to-cart']       = array(
-			'label'       => 'WC - Add to Cart',
+			'label'       => 'WC - Add to Cart Button',
 			'icon_class'  => 'dashicons dashicons-cart',
 			//'tab'         => "#pootle-$token-tab",
 			'callback'    => 'ppbProd_a2c',

@@ -62,7 +62,13 @@ class PPB_Product_Builder_Public{
 		} );
 		add_shortcode( 'ppb_product_tabs', function() {
 			ob_start();
+
+			add_filter( 'the_content', 'wpautop' );
+
 			woocommerce_output_product_data_tabs();
+
+			remove_filter( 'the_content', 'wpautop' );
+
 			return ob_get_clean();
 		} );
 		add_shortcode( 'ppb_product_reviews', function() {
@@ -211,7 +217,13 @@ class PPB_Product_Builder_Public{
 	 * @since 1.0.0
 	 */
 	public function process_shortcode( $data ) {
-		if ( empty( $data['info'] ) || empty( $data['info']['style'] ) ) {
+		if (
+			(
+				! ( defined( 'DOING_AJAX' ) && DOING_AJAX ) && // Not doing AJAX
+				! PPB_Product_Builder::is_ppb_product( get_the_ID() )  // And not using product builder
+			) ||
+			empty( $data['info'] ) || empty( $data['info']['style'] ) // Or content block info or style ain't defined
+		) {
 			return;
 		}
 		$settings = json_decode( $data['info']['style'], 'associative_array' );
@@ -219,10 +231,6 @@ class PPB_Product_Builder_Public{
 		if ( ! empty( $settings[ $this->token ] ) ) {
 
 			if ( $_SERVER['REQUEST_METHOD'] === 'POST' && Pootle_Page_Builder_Live_Editor_Public::is_active() ) {
-				add_filter( 'woocommerce_product_tabs', function ( $tabs ) {
-					unset( $tabs['description'] );
-					return $tabs;
-				}, 11 );
 				global $post, $product, $withcomments;
 				$withcomments = true;
 				$post = get_post( $_POST['post'] );

@@ -8,6 +8,19 @@
 .single-product div.product .ppb-product-builder-module .images {
 	width: 100%;
 }
+
+.single-product div.product .ppb-product-builder-module form.cart .button {
+	float: left;
+	margin-left: 4.3em;
+}
+
+.ppb-product-builder-module img.size-shop_single {
+	width: 100%;
+}
+
+.single-product .ppb-product.product {
+	overflow: visible;
+}
 /*
 .ppb-product-builder-module:after {
 	display: block;
