@@ -1,4 +1,4 @@
-=== Pootle Pagebuilder ===
+=== WooCommerce Builder ===
 
 Contributors: pootlepress, shramee
 Plugin Name: WooCommerce Builder
@@ -41,7 +41,7 @@ WooCommerce builder currently needs *Woocommerce addon* enabled in Pootle Pagebu
 
 == Installation ==
 
-Installing "Pootle Pagebuilder" can be done either by searching for "Pootle Pagebuilder" via the "Plugins > Add New" screen in your WordPress dashboard, or by using the following steps:
+Installing "WooCommerce Builder" can be done either by searching for "WooCommerce Builder" via the "Plugins > Add New" screen in your WordPress dashboard, or by using the following steps:
 
 1. Make sure WooCommerce addon is enabled in WordPress admin > 'Page Builder' > 'Modules'.
 2. Upload the ZIP file through the 'Plugins' > 'Add New' > 'Upload' screen in your WordPress dashboard.
