@@ -126,7 +126,7 @@ class PPB_Product_Builder {
 	 */
 	public function init() {
 		// Requires WooCommerce and PPBv3.6.0+
-		if ( class_exists( 'Pootle_Page_Builder' ) && 1 == version_compare( POOTLEPB_VERSION, '3.6.0' )
+		if ( class_exists( 'pootle_page_builder_for_WooCommerce' ) && 1 == version_compare( POOTLEPB_VERSION, '3.6.0' )
 		     && class_exists( 'WooCommerce' ) ) {
 
 			//Initiate admin
