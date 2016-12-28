@@ -1,14 +1,14 @@
 <?php
-class PPB_Product_Builder_Modules {
+class WooBuilder_Modules {
 
-	public $class = 'PPB_Product_Builder';
+	public $class = 'WooBuilder';
 
-	/** @var PPB_Product_Builder_Modules Instance */
+	/** @var WooBuilder_Modules Instance */
 	private static $_instance = null;
 
 	/**
-	 * Gets PPB_Product_Builder_Modules instance
-	 * @return PPB_Product_Builder_Modules instance
+	 * Gets WooBuilder_Modules instance
+	 * @return WooBuilder_Modules instance
 	 * @since 	1.0.0
 	 */
 	public static function instance() {
@@ -30,9 +30,9 @@ class PPB_Product_Builder_Modules {
 
 	public function module( $mods ) {
 
-		$token = PPB_Product_Builder::$token;
+		$token = WooBuilder::$token;
 
-		if ( ! PPB_Product_Builder::is_ppb_product() ) {
+		if ( ! WooBuilder::is_ppb_product() ) {
 			return $mods;
 		}
 
@@ -90,4 +90,4 @@ class PPB_Product_Builder_Modules {
 	}
 }
 
-PPB_Product_Builder_Modules::instance();
+WooBuilder_Modules::instance();

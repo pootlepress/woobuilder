@@ -1,20 +1,20 @@
 /**
  * Plugin front end styles
  *
- * @package PPB_Product_Builder
+ * @package WooBuilder
  * @version 1.0.0
  */
 
-.single-product div.product .ppb-product-builder-module .images {
+.single-product div.product .woobuilder-module .images {
 	width: 100%;
 }
 
-.single-product div.product .ppb-product-builder-module form.cart .button {
+.single-product div.product .woobuilder-module form.cart .button {
 	float: left;
 	margin-left: 4.3em;
 }
 
-.ppb-product-builder-module img.size-shop_single {
+.woobuilder-module img.size-shop_single {
 	width: 100%;
 }
 
@@ -22,27 +22,27 @@
 	overflow: visible;
 }
 /*
-.ppb-product-builder-module:after {
+.woobuilder-module:after {
 	display: block;
 	content: '';
 	clear: both;
 }
-.ppb-product-builder-module .variations td {
+.woobuilder-module .variations td {
 	padding: 1em;
 	vertical-align: middle;
 	text-transform: capitalize;
 }
-.ppb-product-builder-module .variations td:last-child {
+.woobuilder-module .variations td:last-child {
 	text-align: right;
 }
-.ppb-product-builder-module .variations td * {
+.woobuilder-module .variations td * {
 	display: inline-block;
 	vertical-align: middle;
 }
-.ppb-product-builder-module .quantity {
+.woobuilder-module .quantity {
 	float: left;
 }
-.ppb-product-builder-module .single_add_to_cart_button {
+.woobuilder-module .single_add_to_cart_button {
 	float: right;
 }
 */

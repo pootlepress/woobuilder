@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: Pootle Pagebuilder Product Builder
+Plugin Name: WooBuilder
 Plugin URI: http://pootlepress.com/
 Description: Boilerplate for fast track Pootle Page Builder Addon Development
 Author: Shramee
@@ -20,10 +20,10 @@ require 'inc/class-public.php';
  * @static string $path Plugin root dir path
  * @static string $version Plugin version
  */
-class PPB_Product_Builder {
+class WooBuilder {
 
 	/**
-	 * @var 	PPB_Product_Builder Instance
+	 * @var 	WooBuilder Instance
 	 * @access  private
 	 * @since 	1.0.0
 	 */
@@ -65,14 +65,14 @@ class PPB_Product_Builder {
 	public static $path;
 
 	/**
-	 * @var 	PPB_Product_Builder_Admin Instance
+	 * @var 	WooBuilder_Admin Instance
 	 * @access  public
 	 * @since 	1.0.0
 	 */
 	public $admin;
 
 	/**
-	 * @var 	PPB_Product_Builder_Public Instance
+	 * @var 	WooBuilder_Public Instance
 	 * @access  public
 	 * @since 	1.0.0
 	 */
@@ -84,7 +84,7 @@ class PPB_Product_Builder {
 	 * Ensures only one instance of Storefront_Extension_Boilerplate is loaded or can be loaded.
 	 *
 	 * @since 1.0.0
-	 * @return PPB_Product_Builder instance
+	 * @return WooBuilder instance
 	 */
 	public static function instance() {
 		if ( null == self::$_instance ) {
@@ -100,7 +100,7 @@ class PPB_Product_Builder {
 	 */
 	public static function is_ppb_product( $id = null ) {
 		$is_product = empty( $id ) ? is_product() : 'product' == get_post_type( $id );
-		return $is_product && get_post_meta( get_the_ID(), 'ppb-product-builder', 'single' );
+		return $is_product && get_post_meta( get_the_ID(), 'woobuilder', 'single' );
 	} // End instance()
 
 	/**
@@ -110,7 +110,7 @@ class PPB_Product_Builder {
 	 */
 	private function __construct() {
 
-		self::$token   =   'ppb-product-builder';
+		self::$token   =   'woobuilder';
 		self::$file    =   __FILE__;
 		self::$url     =   plugin_dir_url( __FILE__ );
 		self::$path    =   plugin_dir_path( __FILE__ );
@@ -147,7 +147,7 @@ class PPB_Product_Builder {
 	 */
 	private function _admin() {
 		//Instantiating admin class
-		$this->admin = PPB_Product_Builder_Admin::instance();
+		$this->admin = WooBuilder_Admin::instance();
 
 		add_action( 'admin_print_styles-post-new.php',		array( $this->admin, 'enqueue' ) );
 		add_action( 'admin_print_styles-post.php',			array( $this->admin, 'enqueue' ) );
@@ -174,7 +174,7 @@ class PPB_Product_Builder {
 		require 'inc/class-modules.php';
 
 		//Instantiating public class
-		$this->public = PPB_Product_Builder_Public::instance();
+		$this->public = WooBuilder_Public::instance();
 
 		add_filter( 'wc_get_template_part', array( $this->public, 'wc_get_template_part' ), 10, 3 );
 		add_action( 'pootlepb_live_editor_init', function () {
@@ -206,4 +206,4 @@ class PPB_Product_Builder {
 }
 
 /** Intantiating main plugin class */
-PPB_Product_Builder::instance( __FILE__ );
+WooBuilder::instance( __FILE__ );

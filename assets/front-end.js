@@ -1,7 +1,7 @@
 /**
  * Plugin front end scripts
  *
- * @package PPB_Product_Builder
+ * @package WooBuilder
  * @version 1.0.0
  */
 jQuery(function ($) {

@@ -1,7 +1,7 @@
-=== WooCommerce Builder ===
+=== WooBuilder ===
 
 Contributors: pootlepress, shramee
-Plugin Name: WooCommerce Builder
+Plugin Name: WooBuilder
 Plugin URI: http://www.pootlepress.com/woocommerce-builder
 Tags: product builder, product page builder, product pagebuilder, pootlepress, pootle page builder, pootlepagebuilder, pootle pagebuilder, product layout, product layouts, product layout builder, product layout customizer
 Author URI: http://www.pootlepress.com
@@ -13,7 +13,7 @@ Stable tag: 1.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-WooCommerce Builder let's you take complete control of your product layout, let's you create advanced, professional looking product page layouts.
+WooBuilder let's you take complete control of your product layout, let's you create advanced, professional looking product page layouts.
 
 == Description ==
 
@@ -41,7 +41,7 @@ WooCommerce builder currently needs *Woocommerce addon* enabled in Pootle Pagebu
 
 == Installation ==
 
-Installing "WooCommerce Builder" can be done either by searching for "WooCommerce Builder" via the "Plugins > Add New" screen in your WordPress dashboard, or by using the following steps:
+Installing "WooBuilder" can be done either by searching for "WooBuilder" via the "Plugins > Add New" screen in your WordPress dashboard, or by using the following steps:
 
 1. Make sure WooCommerce addon is enabled in WordPress admin > 'Page Builder' > 'Modules'.
 2. Upload the ZIP file through the 'Plugins' > 'Add New' > 'Upload' screen in your WordPress dashboard.
@@ -63,7 +63,7 @@ Edit the product, uncheck "Enable Product builder" checkbox above `Update` butto
 
 == Screenshots ==
 
-1. WooCommerce product builder modules.
+1. WooBuilder modules.
 
 2. `Product Builder` button.
 

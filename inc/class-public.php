@@ -7,10 +7,10 @@
  * @property string $path Plugin root dir path
  * @property string $version Plugin version
  */
-class PPB_Product_Builder_Public{
+class WooBuilder_Public{
 
 	/**
-	 * @var 	PPB_Product_Builder_Public Instance
+	 * @var 	WooBuilder_Public Instance
 	 * @access  private
 	 * @since 	1.0.0
 	 */
@@ -20,7 +20,7 @@ class PPB_Product_Builder_Public{
 	 * Main Pootle Pagebuilder Product Builder Instance
 	 * Ensures only one instance of Storefront_Extension_Boilerplate is loaded or can be loaded.
 	 * @since 1.0.0
-	 * @return PPB_Product_Builder_Public instance
+	 * @return WooBuilder_Public instance
 	 */
 	public static function instance() {
 		if ( null == self::$_instance ) {
@@ -35,10 +35,10 @@ class PPB_Product_Builder_Public{
 	 * @since   1.0.0
 	 */
 	private function __construct() {
-		$this->token   =   PPB_Product_Builder::$token;
-		$this->url     =   PPB_Product_Builder::$url;
-		$this->path    =   PPB_Product_Builder::$path;
-		$this->version =   PPB_Product_Builder::$version;
+		$this->token   =   WooBuilder::$token;
+		$this->url     =   WooBuilder::$url;
+		$this->path    =   WooBuilder::$path;
+		$this->version =   WooBuilder::$version;
 
 		add_shortcode( 'ppb_product_short_description', function() {
 			ob_start();
@@ -93,7 +93,7 @@ class PPB_Product_Builder_Public{
 		if (
 			'content' == $slug &&
 			'single-product' == $name &&
-		    PPB_Product_Builder::is_ppb_product()
+		    WooBuilder::is_ppb_product()
 		) {
 			$template = dirname( __FILE__ ) . '/ppb-product-tpl.php';
 		}
@@ -111,7 +111,7 @@ class PPB_Product_Builder_Public{
 	public function set_ppb_product_builder_meta( $page_data, $post_id, $post_type ) {
 		if (
 			'product' == $post_type &&
-			wp_verify_nonce( filter_input( INPUT_GET, 'ppb-product-builder-nonce' ), 'enable_ppb_product_builder' )
+			wp_verify_nonce( filter_input( INPUT_GET, 'woobuilder-nonce' ), 'enable_ppb_product_builder' )
 		) {
 
 			if ( ! pootlepb_uses_pb( $post_id ) ) {
@@ -142,7 +142,7 @@ class PPB_Product_Builder_Public{
 				update_post_meta( $post_id, 'panels_data', $ppb_data );
 			}
 
-			update_post_meta( $post_id, 'ppb-product-builder', 1 );
+			update_post_meta( $post_id, 'woobuilder', 1 );
 		}
 		return $page_data;
 	}
@@ -159,8 +159,8 @@ class PPB_Product_Builder_Public{
 
 					ppbProdbuilderSetting = function( $t, val ) {
 						$t.find( '.ppb-edit-block .dashicons-edit' ).click();
-						console.log( 'ppbProdBuilder', $t, $( 'select[dialog-field="ppb-product-builder"]' ) );
-						$('select[dialog-field="ppb-product-builder"]').val( val );
+						console.log( 'ppbProdBuilder', $t, $( 'select[dialog-field="woobuilder"]' ) );
+						$('select[dialog-field="woobuilder"]').val( val );
 						$('#pootlepb-content-editor-panel + div button').click()
 					};
 
@@ -199,7 +199,7 @@ class PPB_Product_Builder_Public{
 	 * @return bool
 	 */
 	public function pootlepb_dump_ppb_content( $bool, $post_id ) {
-		if ( PPB_Product_Builder::is_ppb_product( $post_id ) ) {
+		if ( WooBuilder::is_ppb_product( $post_id ) ) {
 			return false;
 		}
 
@@ -228,7 +228,7 @@ class PPB_Product_Builder_Public{
 		if (
 			(
 				! ( defined( 'DOING_AJAX' ) && DOING_AJAX ) && // Not doing AJAX
-				! PPB_Product_Builder::is_ppb_product( get_the_ID() )  // And not using product builder
+				! WooBuilder::is_ppb_product( get_the_ID() )  // And not using product builder
 			) ||
 			empty( $data['info'] ) || empty( $data['info']['style'] ) // Or content block info or style ain't defined
 		) {
@@ -249,7 +249,7 @@ class PPB_Product_Builder_Public{
 			$code = explode( $code, ' ' )[0]; // Get shortcode name
 			$shortcode = str_replace( '%id%', get_the_ID(), $shortcode );
 			?>
-			<div id="ppb-product-builder-<?php echo $code ?>" class="ppb-product-builder-module">
+			<div id="woobuilder-<?php echo $code ?>" class="woobuilder-module">
 			<!--<?php echo $settings[ $this->token ] ?>-->
 			<?php echo do_shortcode( $shortcode ); ?>
 			</div>

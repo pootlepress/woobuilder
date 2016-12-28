@@ -6,10 +6,10 @@
  * @property string $path Plugin root dir path
  * @property string $version Plugin version
  */
-class PPB_Product_Builder_Admin{
+class WooBuilder_Admin{
 
 	/**
-	 * @var 	PPB_Product_Builder_Admin Instance
+	 * @var 	WooBuilder_Admin Instance
 	 * @access  private
 	 * @since 	1.0.0
 	 */
@@ -18,7 +18,7 @@ class PPB_Product_Builder_Admin{
 	/**
 	 * Main Pootle Pagebuilder Product Builder Instance
 	 * Ensures only one instance of Storefront_Extension_Boilerplate is loaded or can be loaded.
-	 * @return PPB_Product_Builder_Admin instance
+	 * @return WooBuilder_Admin instance
 	 * @since 	1.0.0
 	 */
 	public static function instance() {
@@ -34,10 +34,10 @@ class PPB_Product_Builder_Admin{
 	 * @since 	1.0.0
 	 */
 	private function __construct() {
-		$this->token   =   PPB_Product_Builder::$token;
-		$this->url     =   PPB_Product_Builder::$url;
-		$this->path    =   PPB_Product_Builder::$path;
-		$this->version =   PPB_Product_Builder::$version;
+		$this->token   =   WooBuilder::$token;
+		$this->url     =   WooBuilder::$url;
+		$this->path    =   WooBuilder::$path;
+		$this->version =   WooBuilder::$version;
 	} // End __construct()
 
 	/**
@@ -54,12 +54,12 @@ class PPB_Product_Builder_Admin{
 	public function save_post( $post_id ) {
 		// Verify that the nonce is valid.
 		if (
-			! wp_verify_nonce( filter_input( INPUT_POST, 'ppb-product-builder-nonce' ), 'ppb-product-builder-meta' ) ||
+			! wp_verify_nonce( filter_input( INPUT_POST, 'woobuilder-nonce' ), 'woobuilder-meta' ) ||
 			( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE )
 		) {
 			return;
 		}
-		update_post_meta( $post_id, 'ppb-product-builder', filter_input( INPUT_POST, 'ppb-product-builder' ) );
+		update_post_meta( $post_id, 'woobuilder', filter_input( INPUT_POST, 'woobuilder' ) );
 	}
 
 	/**
@@ -68,17 +68,17 @@ class PPB_Product_Builder_Admin{
 	 */
 	public function product_meta_fields() {
 		// Add an nonce field so we can check for it later.
-		wp_nonce_field( 'ppb-product-builder-meta', 'ppb-product-builder-nonce' );
+		wp_nonce_field( 'woobuilder-meta', 'woobuilder-nonce' );
 
 		?>
 		<div class="clear misc-pub-section">
-			<label for="ppb-product-builder"><b><?php _e( 'Enable Product builder', $this->token ); ?></b></label>
-			<input type="checkbox" class="checkbox" style="" name="ppb-product-builder" id="ppb-product-builder" value="1" <?php
-			checked( get_post_meta( get_the_ID(), 'ppb-product-builder', 'single' ), 1 );
+			<label for="woobuilder"><b><?php _e( 'Enable Product builder', $this->token ); ?></b></label>
+			<input type="checkbox" class="checkbox" style="" name="woobuilder" id="woobuilder" value="1" <?php
+			checked( get_post_meta( get_the_ID(), 'woobuilder', 'single' ), 1 );
 			?>>
 			<span class="description">
 			<?php
-			if ( PPB_Product_Builder::is_ppb_product( get_the_ID() ) ) {
+			if ( WooBuilder::is_ppb_product( get_the_ID() ) ) {
 				_e( 'Uncheck this to disable', $this->token );
 			} else {
 				_e( 'Check this to enable', $this->token );
@@ -97,7 +97,7 @@ class PPB_Product_Builder_Admin{
 
 			$nonce_url = wp_nonce_url( get_the_permalink( $post->ID ), 'ppb-live-edit-nonce', 'ppbLiveEditor' );
 
-			$nonce_url .= '&ppb-product-builder-nonce=' . wp_create_nonce( 'enable_ppb_product_builder' );
+			$nonce_url .= '&woobuilder-nonce=' . wp_create_nonce( 'enable_ppb_product_builder' );
 
 			wp_localize_script(  $this->token, 'wcProductBuilderLiveEditLink', $nonce_url );
 
@@ -135,7 +135,7 @@ HTML;
 	 * @since 	1.0.0
 	 */
 	public function content_block_tabs( $tabs ) {
-		if ( PPB_Product_Builder::is_ppb_product() ) {
+		if ( WooBuilder::is_ppb_product() ) {
 			$tabs[ $this->token ] = array(
 				'label' => 'Product Builder',
 				'priority' => 5,
@@ -152,7 +152,7 @@ HTML;
 	 * @since 	1.0.0
 	 */
 	public function content_block_fields( $fields ) {
-		if ( PPB_Product_Builder::is_ppb_product() ) {
+		if ( WooBuilder::is_ppb_product() ) {
 			$fields[ $this->token ] = array(
 				'name'     => 'Display',
 				'type'     => 'select',
