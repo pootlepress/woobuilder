@@ -60,6 +60,7 @@ class WooBuilder_Admin{
 			return;
 		}
 		update_post_meta( $post_id, 'woobuilder', filter_input( INPUT_POST, 'woobuilder' ) );
+		update_post_meta( $post_id, 'woobuilder_used_builder', 1 );
 	}
 
 	/**
@@ -67,9 +68,9 @@ class WooBuilder_Admin{
 	 * @action admin_init
 	 */
 	public function product_meta_fields() {
+		if ( 'product' !== get_post_type() ) { return; }
 		// Add an nonce field so we can check for it later.
 		wp_nonce_field( 'woobuilder-meta', 'woobuilder-nonce' );
-
 		?>
 		<div class="clear misc-pub-section">
 			<label for="woobuilder"><b><?php _e( 'Enable Product builder', $this->token ); ?></b></label>

@@ -92,12 +92,14 @@ class WooBuilder_Public{
 	public function wc_get_template_part( $template, $slug, $name ) {
 		if (
 			'content' == $slug &&
-			'single-product' == $name &&
-		    WooBuilder::is_ppb_product()
+			'single-product' == $name
 		) {
-			$template = dirname( __FILE__ ) . '/ppb-product-tpl.php';
+			if ( WooBuilder::is_ppb_product() ) {
+				$template = dirname( __FILE__ ) . '/ppb-product-tpl.php';
+			} else if ( get_post_meta( get_the_ID(), 'woobuilder_used_builder', 'single' ) ) {
+				remove_filter( 'the_content', array( $GLOBALS['Pootle_Page_Builder_Render_Layout'], 'content_filter' ) );
+			}
 		}
-
 		return $template;
 	}
 
@@ -255,5 +257,9 @@ class WooBuilder_Public{
 			</div>
 			<?php
 		}
+	}
+
+	public function init() {
+		
 	}
 }

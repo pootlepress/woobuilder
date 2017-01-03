@@ -21,6 +21,23 @@
 .single-product .ppb-product.product {
 	overflow: visible;
 }
+
+/* Center cart *
+.single-product div.product .woobuilder-module form.cart {
+	text-align: center;
+}
+
+.single-product div.product .woobuilder-module form.cart .quantity,
+.single-product div.product .woobuilder-module form.cart input {
+	float: none;
+	display: inline-block
+}
+
+.single-product div.product .woobuilder-module form.cart .button {
+	float: none;
+	margin-left: 2em;
+}
+*/
 /*
 .woobuilder-module:after {
 	display: block;
