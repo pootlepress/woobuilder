@@ -2,12 +2,13 @@
 /*
 Plugin Name: WooBuilder
 Plugin URI: http://pootlepress.com/
-Description: Boilerplate for fast track Pootle Page Builder Addon Development
-Author: Shramee
-Version: 1.0.0
-Author URI: http://shramee.com/
+Description: WooBuilder let's you take complete control of your product layout, let's you create advanced, professional looking product page layouts.
+Author: pootlepress
+Version: 1.1.0
+Author URI: http://pootlepress.com/
 @developer shramee <shramee.srivastav@gmail.com>
 */
+
 /** Plugin admin class */
 require 'inc/class-admin.php';
 /** Plugin public class */
@@ -114,7 +115,7 @@ class WooBuilder {
 		self::$file    =   __FILE__;
 		self::$url     =   plugin_dir_url( __FILE__ );
 		self::$path    =   plugin_dir_path( __FILE__ );
-		self::$version =   '1.0.0';
+		self::$version =   '1.1.0';
 
 		add_action( 'init', array( $this, 'init' ) );
 	} // End __construct()

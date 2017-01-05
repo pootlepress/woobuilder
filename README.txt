@@ -6,10 +6,9 @@ Plugin URI: http://www.pootlepress.com/woocommerce-builder
 Tags: product builder, product page builder, product pagebuilder, pootlepress, pootle page builder, pootlepagebuilder, pootle pagebuilder, product layout, product layouts, product layout builder, product layout customizer
 Author URI: http://www.pootlepress.com
 Author: PootlePress
-Donate link:
 Requires at least: 4.1.0
 Tested up to: 4.7-alpha-38356
-Stable tag: 1.0.0
+Stable tag: 1.1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -70,6 +69,10 @@ Edit the product, uncheck "Enable Product builder" checkbox above `Update` butto
 3. `Enable Product builder` checkbox.
 
 == Upgrade Notice ==
+
+= 1.1.0 =
+ * Fix - WooBuilder metabox showing on all post edit screens
+ * Fix - Disabling WooBuilder shows ppb layout in description instead of long description
 
 = 1.0.0 =
  * Ready for the world
