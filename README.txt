@@ -16,11 +16,12 @@ WooBuilder let's you take complete control of your product layout, let's you cre
 
 == Description ==
 
-https://vimeo.com/181944652
+https://vimeo.com/196156072
 
 Take control of your product page, use full width rows, parallax backgrounds, ken burns effect, animated columns, video backgrounds and lot more to create engaging product layouts, and all this without touching a single line of code!
 
 Following modules are added to the Pootle Pagebuilder live editor to make designing product layouts a ton easier...
+
  * WC - Add to Cart Button
  * WC - Short Description
  * WC - Product tabs
