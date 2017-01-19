@@ -179,7 +179,7 @@ class WooBuilder {
 
 		$this->public->init();
 
-		add_filter( 'wc_get_template_part', array( $this->public, 'wc_get_template_part' ), 10, 3 );
+		add_filter( 'wc_get_template_part', array( $this->public, 'wc_get_template_part' ), 1001, 3 ); // more than storefront pro 999
 		add_action( 'pootlepb_live_editor_init', function () {
 			$this->public->set_ppb_product_builder_meta( null, get_the_ID(), get_post_type() );
 		} );
