@@ -100,8 +100,8 @@ class WooBuilder {
 	 * @return bool
 	 */
 	public static function is_ppb_product( $id = null ) {
-		$is_product = empty( $id ) ? is_product() : 'product' == get_post_type( $id );
-		return $is_product && get_post_meta( get_the_ID(), 'woobuilder', 'single' );
+		$id = $id ? $id : get_the_ID();
+		return 'product' == get_post_type( $id ) && get_post_meta( $id, 'woobuilder', 'single' );
 	} // End instance()
 
 	/**
