@@ -8,7 +8,7 @@ Author URI: http://www.pootlepress.com
 Author: PootlePress
 Requires at least: 4.1.0
 Tested up to: 4.7-alpha-38356
-Stable tag: 1.1.0
+Stable tag: 1.2.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -70,6 +70,12 @@ Edit the product, uncheck "Enable Product builder" checkbox above `Update` butto
 3. `Enable Product builder` checkbox.
 
 == Upgrade Notice ==
+
+= 1.2.0 =
+ * 2017-03-21
+ * Fix - Content dumping in product content
+ * Fix - WooBuilder::is_ppb_product not working when global $post not available
+ * Fix - WooBuilder products not working when fancy product layout selected in Storefront Pro
 
 = 1.1.0 =
  * 2017-01-05
