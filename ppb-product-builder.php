@@ -187,6 +187,7 @@ class WooBuilder {
 		//Adding front end JS and CSS in /assets folder
 		add_action( 'wp_enqueue_scripts', array( $this->public, 'enqueue' ) );
 		add_filter( 'pootlepb_live_page_template', array( $this->public, 'set_ppb_product_builder_meta' ), 10, 3 );
+		add_filter( 'pootlepb_dump_ppb_content', array( $this->public, 'pootlepb_dump_ppb_content' ), 10, 3 );
 		//Render product shortcodes
 		add_action( 'pootlepb_render_content_block', array( $this->public, 'process_shortcode' ), 52, 2 );
 		add_action( 'pootlepb_enqueue_admin_scripts', array( $this->public, 'live_editor_scripts' ), 52, 2 );

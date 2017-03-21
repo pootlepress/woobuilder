@@ -194,7 +194,7 @@ class WooBuilder_Public{
 	}
 
 	/**
-	 *
+	 * Disables dumping content for WB Products
 	 * @param bool $bool
 	 * @param int $post_id
 	 *
@@ -239,6 +239,12 @@ class WooBuilder_Public{
 		$settings = json_decode( $data['info']['style'], 'associative_array' );
 
 		if ( ! empty( $settings[ $this->token ] ) ) {
+
+			global $Pootle_Page_Builder_Render_Layout;
+
+			if ( has_filter( 'the_content', array( $Pootle_Page_Builder_Render_Layout, 'content_filter' ) ) ) {
+				remove_filter( 'the_content', array( $Pootle_Page_Builder_Render_Layout, 'content_filter' ) );
+			}
 
 			if ( $_SERVER['REQUEST_METHOD'] === 'POST' && Pootle_Page_Builder_Live_Editor_Public::is_active() ) {
 				global $post, $product, $withcomments;
