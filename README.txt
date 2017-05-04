@@ -71,6 +71,12 @@ Edit the product, uncheck "Enable Product builder" checkbox above `Update` butto
 
 == Upgrade Notice ==
 
+= 1.0.0 =
+ * 2016-12-29
+ * Ready for the world
+
+== Changelog ==
+
 = 1.2.0 =
  * 2017-03-21
  * Fix - Content dumping in product content
@@ -81,12 +87,6 @@ Edit the product, uncheck "Enable Product builder" checkbox above `Update` butto
  * 2017-01-05
  * Fix - WooBuilder metabox showing on all post edit screens
  * Fix - Disabling WooBuilder shows ppb layout in description instead of long description
-
-= 1.0.0 =
- * 2016-12-29
- * Ready for the world
-
-== Changelog ==
 
 = 1.0.0 =
  * Ready for the world

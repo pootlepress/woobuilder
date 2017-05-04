@@ -4,4 +4,5 @@ remove_filter( 'the_content', array( $GLOBALS['Pootle_Page_Builder_Render_Layout
 ?>
 <div class="product ppb-product">
 	<?php echo Pootle_Page_Builder_Render_Layout::render( get_the_ID() ); ?>
+	<?php wc()->structured_data->generate_product_data(); ?>
 </div>

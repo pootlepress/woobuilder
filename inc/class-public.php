@@ -160,10 +160,11 @@ class WooBuilder_Public{
 				jQuery( function ( $ ) {
 
 					ppbProdbuilderSetting = function( $t, val ) {
-						$t.find( '.ppb-edit-block .dashicons-edit' ).click();
+						$t.find( '.ppb-edit-block .settings-dialog' ).click();
 						console.log( 'ppbProdBuilder', $t, $( 'select[dialog-field="woobuilder"]' ) );
 						$('select[dialog-field="woobuilder"]').val( val );
 						$('#pootlepb-content-editor-panel + div button').click()
+						$( '#pootlepb-content-editor-panel' ).ppbDialog( 'close' );
 					};
 
 					window.ppbModules.ppbProd_a2c = function ( $t ) {
