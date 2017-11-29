@@ -46,6 +46,52 @@ class WooBuilder_Admin{
 	 */
 	public function admin_init() {
 		add_filter( 'pootlepb_builder_post_types', array( $this, 'remove_ppb_product' ), 99 );
+
+		register_setting( 'pootlepage-display', 'pootlepb-template-product' );
+
+		add_settings_field( 'responsive', __( 'WooBuilder starter template', 'ppb-panels' ), array(
+			$this,
+			'template_product_field',
+		), 'pootlepage-display', 'display' );
+
+	}
+
+	public function template_product_field() {
+		$selected = get_option( 'pootlepb-template-product' );
+		$prods = get_posts( [
+			'post_status' => 'publish',
+			'numberposts' => 99,
+			'post_type'   => 'product',
+			'meta_query'     => array(
+				array(
+					'key'     => 'panels_data',
+					'compare' => 'EXISTS',
+				),
+			)
+		] );
+		?>
+		<select name="pootlepb-template-product">
+			<?php
+			if ( $prods ) {
+				?>
+				<option>Please choose...</option>
+				<?php
+				foreach ( $prods as $prod ) {
+					?>
+					<option value='<?php echo $prod->ID ?>' <?php selected( $prod->ID, $selected ) ?>><?php echo $prod->post_title ?></option>
+					<?php
+				}
+			} else {
+				?>
+				<option>No Pagebuilder products found...</option>
+				<?php
+			}
+			?>
+		</select>
+		<p>
+			This product's page builder rows will be used as starter for all products.
+		</p>
+		<?php
 	}
 
 	/**

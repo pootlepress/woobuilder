@@ -150,18 +150,20 @@ class WooBuilder {
 		//Instantiating admin class
 		$this->admin = WooBuilder_Admin::instance();
 
-		add_action( 'admin_print_styles-post-new.php',		array( $this->admin, 'enqueue' ) );
-		add_action( 'admin_print_styles-post.php',			array( $this->admin, 'enqueue' ) );
+		add_action( 'admin_print_styles-post-new.php', array( $this->admin, 'enqueue' ) );
+		add_action( 'admin_print_styles-post.php', array( $this->admin, 'enqueue' ) );
 
-		add_filter( 'admin_init',							array( $this->admin, 'admin_init' ) );
-		add_filter( 'save_post',							array( $this->admin, 'save_post' ) );
-		add_filter( 'post_submitbox_misc_actions',			array( $this->admin, 'product_meta_fields' ) );
+		add_filter( 'admin_init', array( $this->admin, 'admin_init' ) );
+		add_filter( 'save_post', array( $this->admin, 'save_post' ) );
+
+		add_filter( 'post_submitbox_misc_actions', array( $this->admin, 'product_meta_fields' ) );
+
 		//Content block panel tabs
-		add_filter( 'pootlepb_content_block_tabs',			array( $this->admin, 'content_block_tabs' ) );
+		add_filter( 'pootlepb_content_block_tabs', array( $this->admin, 'content_block_tabs' ) );
 		//Content block panel tabs
-		add_filter( 'pootlepb_le_content_block_tabs',		array( $this->admin, 'content_block_tabs' ) );
+		add_filter( 'pootlepb_le_content_block_tabs', array( $this->admin, 'content_block_tabs' ) );
 		//Content block panel fields
-		add_filter( 'pootlepb_content_block_fields',		array( $this->admin, 'content_block_fields' ) );
+		add_filter( 'pootlepb_content_block_fields', array( $this->admin, 'content_block_fields' ) );
 
 
 	}
@@ -187,6 +189,7 @@ class WooBuilder {
 		//Adding front end JS and CSS in /assets folder
 		add_action( 'wp_enqueue_scripts', array( $this->public, 'enqueue' ) );
 		add_filter( 'pootlepb_live_page_template', array( $this->public, 'set_ppb_product_builder_meta' ), 10, 3 );
+		add_filter( 'woobuilder_live_product_template', array( $this->public, 'filter_live_product_template' ), 10, 3 );
 		add_filter( 'pootlepb_dump_ppb_content', array( $this->public, 'pootlepb_dump_ppb_content' ), 10, 3 );
 		//Render product shortcodes
 		add_action( 'pootlepb_render_content_block', array( $this->public, 'process_shortcode' ), 52, 2 );

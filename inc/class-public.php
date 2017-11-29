@@ -132,7 +132,7 @@ class WooBuilder_Public{
 				 *
 				 * @param int $id Post ID
 				 */
-				$ppb_data = apply_filters( 'pootlepb_live_product_template', $ppble_new_live_page, $post_id, $post_type );
+				$ppb_data = apply_filters( 'woobuilder_live_product_template', $ppble_new_live_page, $post_id, $post_type );
 
 				foreach ( $ppb_data['widgets'] as $i => $wid ) {
 					if ( ! empty( $wid['info']['style'] ) ) {
@@ -147,6 +147,20 @@ class WooBuilder_Public{
 			update_post_meta( $post_id, 'woobuilder', 1 );
 		}
 		return $page_data;
+	}
+
+	/**
+	 * @param array $ppb_data WooBuilder product starter template
+	 */
+	public function filter_live_product_template( $ppb_data ) {
+		$id = get_option( 'pootlepb-template-product', 0 );
+		if ( $id ) {
+			$ppb_meta = get_post_meta( $id, 'panels_data', 'single' );
+			if ( ! empty( $ppb_meta['grids'] ) && is_array( $ppb_meta['grids'] ) ) {
+				$ppb_data = $ppb_meta;
+			}
+		}
+		return $ppb_data;
 	}
 
 	/**
