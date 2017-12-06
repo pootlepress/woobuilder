@@ -45,6 +45,11 @@ class WooBuilder_Public{
 			woocommerce_template_single_excerpt();
 			return ob_get_clean();
 		} );
+		add_shortcode( 'ppb_product_price', function() {
+			ob_start();
+			woocommerce_template_single_price();
+			return ob_get_clean();
+		} );
 		add_shortcode( 'ppb_product_related', function() {
 			ob_start();
 			woocommerce_related_products();
@@ -183,6 +188,10 @@ class WooBuilder_Public{
 
 					window.ppbModules.ppbProd_a2c = function ( $t ) {
 						ppbProdbuilderSetting( $t, '[ppb_product_add_to_cart]' );
+					};
+
+					window.ppbModules.ppbProd_price = function ( $t ) {
+						ppbProdbuilderSetting( $t, '[ppb_product_price]' );
 					};
 					window.ppbModules.ppbProd_desc = function ( $t ) {
 						ppbProdbuilderSetting( $t, '[ppb_product_short_description]' );

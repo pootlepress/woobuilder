@@ -37,6 +37,13 @@ class WooBuilder_Modules {
 		}
 
 		$mods['ppb-product-add-to-cart']       = array(
+			'label'       => 'WC - Price',
+			'icon_class'  => 'dashicons dashicons-cart',
+			'tab'         => "#pootle-$token-tab",
+			'callback'    => 'ppbProd_price',
+			'ActiveClass' => $this->class,
+		);
+		$mods['ppb-product-add-to-cart']       = array(
 			'label'       => 'WC - Add to Cart Button',
 			'icon_class'  => 'dashicons dashicons-cart',
 			'tab'         => "#pootle-$token-tab",
