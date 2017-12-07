@@ -50,6 +50,9 @@ class WooBuilder_Public{
 			woocommerce_template_single_price();
 			return ob_get_clean();
 		} );
+		add_shortcode( 'ppb_product_title', function() {
+			return get_the_title();
+		} );
 		add_shortcode( 'ppb_product_related', function() {
 			ob_start();
 			woocommerce_related_products();
@@ -193,6 +196,10 @@ class WooBuilder_Public{
 					window.ppbModules.ppbProd_price = function ( $t ) {
 						ppbProdbuilderSetting( $t, '[ppb_product_price]' );
 					};
+
+					window.ppbModules.ppbProd_title = function ( $t ) {
+						ppbProdbuilderSetting( $t, '[ppb_product_title]' );
+					};
 					window.ppbModules.ppbProd_desc = function ( $t ) {
 						ppbProdbuilderSetting( $t, '[ppb_product_short_description]' );
 					};
@@ -211,8 +218,22 @@ class WooBuilder_Public{
 					window.ppbModules.ppbProd_reviews = function ( $t ) {
 						ppbProdbuilderSetting( $t, '[ppb_product_reviews]' );
 					};
+
+					$( '#pootle-page-builder' ).on( 'dblclick click', '.woobuilder-module', function( e ) {
+						e.preventDefault();
+						ppbNotify('Sorry, This data is coming from WooCommerce and can’t be edited in live editor.');
+					} )
 				} );
 			</script>
+			<style>
+				.woobuilder-module {
+					user-select: none;
+					-moz-user-select: none;
+					-khtml-user-select: none;
+					-webkit-user-select: none;
+					-o-user-select: none;
+				}
+			</style>
 			<?php
 		} );
 	}

@@ -208,6 +208,7 @@ HTML;
 					''									=> 'Choose...',
 					'[ppb_product_add_to_cart]'			  => 'Add to Cart',
 					'[ppb_product_price]'			        => 'Product Price',
+					'[ppb_product_title]'			        => 'Product Title',
 					'[ppb_product_short_description]'	=> 'Short Description',
 					'[ppb_product_tabs]'				      => 'Product tabs',
 					'[ppb_product_reviews]'				    => 'Product reviews',
