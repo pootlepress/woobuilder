@@ -182,26 +182,27 @@ class WooBuilder_Public{
 				jQuery( function ( $ ) {
 
 					ppbProdbuilderSetting = function( $t, val ) {
+						var $pnl = $( '#pootlepb-content-editor-panel' );
 						$t.find( '.ppb-edit-block .settings-dialog' ).click();
-						console.log( 'ppbProdBuilder', $t, $( 'select[dialog-field="woobuilder"]' ) );
 						$('select[dialog-field="woobuilder"]').val( val );
-						$('#pootlepb-content-editor-panel + div button').click()
-						$( '#pootlepb-content-editor-panel' ).ppbDialog( 'close' );
+						$pnl.next( 'div' ).find( 'button' ).click();
+						$pnl.ppbDialog( 'close' );
 					};
 
 					window.ppbModules.ppbProd_a2c = function ( $t ) {
 						ppbProdbuilderSetting( $t, '[ppb_product_add_to_cart]' );
 					};
 
-					window.ppbModules.ppbProd_price = function ( $t ) {
-						ppbProdbuilderSetting( $t, '[ppb_product_price]' );
-					};
-
-					window.ppbModules.ppbProd_title = function ( $t ) {
-						ppbProdbuilderSetting( $t, '[ppb_product_title]' );
-					};
 					window.ppbModules.ppbProd_desc = function ( $t ) {
 						ppbProdbuilderSetting( $t, '[ppb_product_short_description]' );
+					};
+
+					window.ppbModules.ppbProd_details = function ( $t ) {
+						ppbProdbuilderSetting( $t, [
+							'[ppb_product_title]',
+							'[ppb_product_short_description]',
+							'[ppb_product_add_to_cart]',
+							] );
 					};
 					window.ppbModules.ppbProd_tabs = function ( $t ) {
 						ppbProdbuilderSetting( $t, '[ppb_product_tabs]' );
@@ -232,6 +233,11 @@ class WooBuilder_Public{
 					-khtml-user-select: none;
 					-webkit-user-select: none;
 					-o-user-select: none;
+				}
+				.field.field-woobuilder .chosen-choices .search-choice {
+					display: block;
+					float: none;
+					margin: 5px 0;
 				}
 			</style>
 			<?php
@@ -297,16 +303,21 @@ class WooBuilder_Public{
 				$post = get_post( $_POST['post'] );
 				$product = wc_get_product( $post );
 			}
-			$shortcode = $settings[ $this->token ];
-			$code = str_replace( array( '[', ']' ), '', $shortcode ); // Remove square brackets
-			$code = explode( $code, ' ' )[0]; // Get shortcode name
-			$shortcode = str_replace( '%id%', get_the_ID(), $shortcode );
-			?>
-			<div id="woobuilder-<?php echo $code ?>" class="woobuilder-module">
-			<!--<?php echo $settings[ $this->token ] ?>-->
-			<?php echo do_shortcode( $shortcode ); ?>
-			</div>
-			<?php
+			$shortcodes = $settings[ $this->token ];
+			if ( ! is_array( $shortcodes ) ) {
+				$shortcodes = [ $shortcodes, ];
+			}
+			foreach ( $shortcodes as $shortcode ) {
+				$code = str_replace( array( '[', ']' ), '', $shortcode ); // Remove square brackets
+				$code = explode( $code, ' ' )[0]; // Get shortcode name
+				$shortcode = str_replace( '%id%', get_the_ID(), $shortcode );
+				?>
+				<div id="woobuilder-<?php echo $code ?>" class="woobuilder-module">
+					<!--<?php echo $settings[ $this->token ] ?>-->
+					<?php echo do_shortcode( $shortcode ); ?>
+				</div>
+				<?php
+			}
 		}
 	}
 

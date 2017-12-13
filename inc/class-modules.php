@@ -36,18 +36,11 @@ class WooBuilder_Modules {
 			return $mods;
 		}
 
-		$mods['ppb-product-price']       = array(
-			'label'       => 'WC - Price',
+		$mods['ppb-product-details']       = array(
+			'label'       => 'WC - Product details',
 			'icon_class'  => 'dashicons dashicons-cart',
 			'tab'         => "#pootle-$token-tab",
-			'callback'    => 'ppbProd_price',
-			'ActiveClass' => $this->class,
-		);
-		$mods['ppb-product-title']       = array(
-			'label'       => 'WC - Title',
-			'icon_class'  => 'dashicons dashicons-minus',
-			'tab'         => "#pootle-$token-tab",
-			'callback'    => 'ppbProd_title',
+			'callback'    => 'ppbProd_details',
 			'ActiveClass' => $this->class,
 		);
 		$mods['ppb-product-add-to-cart']       = array(

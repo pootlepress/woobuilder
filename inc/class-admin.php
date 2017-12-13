@@ -156,6 +156,11 @@ class WooBuilder_Admin{
 	button.wp-switch-editor {
 		padding: .5em .7em;
 	}
+	.field.field-woobuilder .chosen-choices .search-choice {
+    display: block;
+    float: none;
+    margin: 5px 0;
+	}
 </style>
 HTML;
 
@@ -202,19 +207,19 @@ HTML;
 		if ( WooBuilder::is_ppb_product() ) {
 			$fields[ $this->token ] = array(
 				'name'     => 'Display',
-				'type'     => 'select',
+				'type'     => 'multi-select',
 				'priority' => 1,
 				'options'  => array(
-					''									=> 'Choose...',
-					'[ppb_product_add_to_cart]'			  => 'Add to Cart',
-					'[ppb_product_price]'			        => 'Product Price',
-					'[ppb_product_title]'			        => 'Product Title',
-					'[ppb_product_short_description]'	=> 'Short Description',
-					'[ppb_product_tabs]'				      => 'Product tabs',
-					'[ppb_product_reviews]'				    => 'Product reviews',
-					'[ppb_product_related]'				    => 'Related products',
-					'[ppb_product_images]'				    => 'Product images',
-					'[ppb_product_rating]'				    => 'Product rating',
+					''                                => 'Choose...',
+					'[ppb_product_title]'             => 'Product Title',
+					'[ppb_product_images]'            => 'Product images',
+					'[ppb_product_short_description]' => 'Short Description',
+					'[ppb_product_price]'             => 'Product Price',
+					'[ppb_product_add_to_cart]'       => 'Add to Cart',
+					'[ppb_product_tabs]'              => 'Product tabs',
+					'[ppb_product_reviews]'           => 'Product reviews',
+					'[ppb_product_related]'           => 'Related products',
+					'[ppb_product_rating]'            => 'Product rating',
 				),
 				'tab'      => $this->token,
 			);
