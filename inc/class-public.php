@@ -203,6 +203,7 @@ class WooBuilder_Public{
 						ppbProdbuilderSetting( $t, [
 							'[ppb_product_title]',
 							'[ppb_product_short_description]',
+							'[ppb_product_price]',
 							'[ppb_product_add_to_cart]',
 							] );
 					};
