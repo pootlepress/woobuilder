@@ -51,7 +51,9 @@ class WooBuilder_Public{
 			return ob_get_clean();
 		} );
 		add_shortcode( 'ppb_product_title', function() {
-			return get_the_title();
+			ob_start();
+			woocommerce_template_loop_product_title();
+			return ob_get_clean();
 		} );
 		add_shortcode( 'ppb_product_related', function() {
 			ob_start();
@@ -313,7 +315,7 @@ class WooBuilder_Public{
 				$shortcode = str_replace( '%id%', get_the_ID(), $shortcode );
 				?>
 				<div id="woobuilder-<?php echo $code ?>" class="woobuilder-module">
-					<!--<?php echo $settings[ $this->token ] ?>-->
+					<!--<?php echo $shortcode ?>-->
 					<?php echo do_shortcode( $shortcode ); ?>
 				</div>
 				<?php
