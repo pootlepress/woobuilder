@@ -7,8 +7,8 @@ Tags: product builder, product page builder, product pagebuilder, pootlepress, p
 Author URI: http://www.pootlepress.com
 Author: PootlePress
 Requires at least: 4.1.0
-Tested up to: 4.7-alpha-38356
-Stable tag: 1.3.0
+Tested up to: 4.9.4
+Stable tag: 2.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -76,6 +76,16 @@ Edit the product, uncheck "Enable Product builder" checkbox above `Update` butto
  * Ready for the world
 
 == Changelog ==
+
+= 2.0.0 =
+ * 2018-02-23
+ * New - Starter template for products
+ * New - Multiple WC modules in a single content block
+ * New - New `WC - Product details` module
+ * New - Product Price option
+ * New - Product Price option
+ * New - Row background Product featured image
+ * New - WooBuilder starter template setting in Page Builder > Settings
 
 = 1.3.0 =
  * 2017-05-11
