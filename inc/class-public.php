@@ -255,7 +255,7 @@ class WooBuilder_Public{
 	 * @return bool
 	 */
 	public function pootlepb_dump_ppb_content( $bool, $post_id ) {
-		if ( WooBuilder::is_ppb_product( $post_id ) ) {
+		if ( 'product' == get_post_type( $post_id ) ) {
 			return false;
 		}
 
@@ -312,19 +312,25 @@ class WooBuilder_Public{
 			}
 			foreach ( $shortcodes as $shortcode ) {
 				$code = str_replace( array( '[', ']' ), '', $shortcode ); // Remove square brackets
-				$code = explode( $code, ' ' )[0]; // Get shortcode name
+				$code = explode( ' ', $code )[0]; // Get shortcode name
 				$shortcode = str_replace( '%id%', get_the_ID(), $shortcode );
+				add_filter( 'woocommerce_gallery_image_size', [ $this, 'woocommerce_gallery_image_size' ] );
 				?>
 				<div id="woobuilder-<?php echo $code ?>" class="woobuilder-module">
 					<!--<?php echo $shortcode ?>-->
 					<?php echo do_shortcode( $shortcode ); ?>
 				</div>
 				<?php
+				remove_filter( 'woocommerce_gallery_image_size', [ $this, 'woocommerce_gallery_image_size' ] );
 			}
 		}
 	}
 
+	public function woocommerce_gallery_image_size() {
+		return 'large';
+	}
+
 	public function init() {
-		
+
 	}
 }
