@@ -4,7 +4,7 @@ Plugin Name: WooBuilder
 Plugin URI: http://pootlepress.com/
 Description: WooBuilder let's you take complete control of your product layout, let's you create advanced, professional looking product page layouts.
 Author: pootlepress
-Version: 2.0.0
+Version: 2.1.0
 Author URI: http://pootlepress.com/
 @developer shramee <shramee.srivastav@gmail.com>
 */
@@ -115,7 +115,7 @@ class WooBuilder {
 		self::$file    =   __FILE__;
 		self::$url     =   plugin_dir_url( __FILE__ );
 		self::$path    =   plugin_dir_path( __FILE__ );
-		self::$version =   '2.0.0';
+		self::$version =   '2.1.0';
 
 		add_action( 'init', array( $this, 'init' ) );
 	} // End __construct()

@@ -8,7 +8,7 @@ Author URI: http://www.pootlepress.com
 Author: PootlePress
 Requires at least: 4.1.0
 Tested up to: 4.9.4
-Stable tag: 2.0.0
+Stable tag: 2.1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -76,6 +76,12 @@ Edit the product, uncheck "Enable Product builder" checkbox above `Update` butto
  * Ready for the world
 
 == Changelog ==
+
+= 2.1.0 =
+ * 2018-03-09
+ * Tweak - Never populate Pagebuilder content on products
+ * Fix - Implode error when WP debug is enabled
+ * New - WooCommerce gallery in page builder size set to `large`
 
 = 2.0.0 =
  * 2018-02-23
