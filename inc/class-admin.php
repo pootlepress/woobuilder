@@ -49,7 +49,7 @@ class WooBuilder_Admin{
 
 		register_setting( 'pootlepage-display', 'pootlepb-template-product' );
 
-		add_settings_field( 'responsive', __( 'WooBuilder starter template', 'ppb-panels' ), array(
+		add_settings_field( 'pootlepb-template-product', __( 'WooBuilder starter template', 'ppb-panels' ), array(
 			$this,
 			'template_product_field',
 		), 'pootlepage-display', 'display' );
