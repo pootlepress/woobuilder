@@ -7,7 +7,7 @@ Tags: product builder, product page builder, product pagebuilder, pootlepress, p
 Author URI: http://www.pootlepress.com
 Author: PootlePress
 Requires at least: 4.1.0
-Tested up to: 5.0.0
+Tested up to: 5.7.0
 Stable tag: 2.1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -15,6 +15,14 @@ License URI: http://www.gnu.org/licenses/gpl-3.0.html
 WooBuilder let's you take complete control of your product layout, let's you create advanced, professional looking product page layouts.
 
 == Description ==
+
+Please note that WooBuilder for PageBuilder Pro is an add-on plugin for our [PageBuilder Pro](https://www.pootlepress.com/pootle-pagebuilder-pro/) plugin.
+
+We have a new plugin called [WooBuilder Blocks](https://www.pootlepress.com/woobuilder-blocks/) that
+ lets you [customise the WooCommerce Product Page](https://www.pootlepress.com/2021/01/customize-woocommerce-product-page/)
+ with the WordPress Block Editor, Gutenberg, and requires no page builder to work.
+
+[Click here](https://www.pootlepress.com/woobuilder-blocks/) for more information on WooBuilder Blocks.
 
 https://vimeo.com/196156072
 
@@ -31,6 +39,14 @@ Following modules are added to the Pootle Pagebuilder live editor to make design
  * WC - Product reviews
 
 WooCommerce builder currently needs *Woocommerce addon* enabled in Pootle Pagebuilder Pro.
+
+**How to Customise WooCommerce Product Page Tutorials**
+
+* [How to customize the WooCommerce Product Page](https://www.pootlepress.com/2021/01/customize-woocommerce-product-page/)
+* [How to create a WooCommerce Landing Page or WooCommerce Single Page Website](https://www.pootlepress.com/2021/03/how-to-create-a-woocommerce-landing-page-or-woocommerce-single-page-website/)
+* [How to customise WooCommerce Product Page Template](https://www.pootlepress.com/2020/04/the-complete-guide-to-using-woobuilder-blocks-templates/)
+* [How to change WooCommerce related products](https://www.pootlepress.com/2020/05/how-to-change-woocommerce-related-products/)
+* [A/B split testing for WooCommerce Product Page](https://www.pootlepress.com/2020/01/woocommerce-a-b-split-testing/)
 
 == Usage ==
 
