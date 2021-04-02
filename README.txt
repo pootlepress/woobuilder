@@ -12,7 +12,7 @@ Stable tag: 2.1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-WooBuilder let's you take complete control of your product layout, let's you create advanced, professional looking product page layouts.
+WooBuilder lets you take complete control of your product layout, let's you create advanced, professional looking product page layouts.
 
 == Description ==
 
